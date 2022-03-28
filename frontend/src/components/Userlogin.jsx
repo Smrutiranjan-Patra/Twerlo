@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "./css/userlogin.css";
+import "./css/login.css";
 import axios from "axios";
-
 
 const Userlogin = () => {
   const [userlogindetails, setUserlogindetails] = useState({
@@ -21,6 +20,10 @@ const Userlogin = () => {
       .post("http://localhost:2022/user/login", userlogindetails)
       .then((res) => {
         alert(res.data.message);
+        setUserlogindetails({
+          email: "",
+          password: "",
+        });
       });
   };
   return (

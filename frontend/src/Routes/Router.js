@@ -11,7 +11,7 @@ function Router() {
         <Route path="/" element={<Userlogin />} />
         <Route path="/dashboard" element={<Userdashboard />} />
         <Route path="/admin" element={<Adminlogin />} />
-        <Route path="/admin." element={<Admindashboard />} />
+        <Route path="/admin/dashboard" element={<Admindashboard />} />
       </Routes>
     </div>
   );

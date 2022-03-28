@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./css/login.css";
 
 const Adminlogin = () => {
   const [userlogindetails, setUserlogindetails] = useState({
@@ -23,6 +24,7 @@ const Adminlogin = () => {
   };
   return (
     <div className="userloginpage">
+      <p>Welcome to Admin login</p>
       <input
         type="email"
         name="email"
@@ -37,7 +39,7 @@ const Adminlogin = () => {
         placeholder="Your Password"
         onChange={handledata}
       />
-      <button onClick={UserAuth}>Submit</button>
+      <button onClick={UserAuth}>Admin login</button>
     </div>
   );
 };
