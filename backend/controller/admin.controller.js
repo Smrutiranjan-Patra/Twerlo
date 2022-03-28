@@ -11,17 +11,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
-  try {
-    const loginuser = await admin.find({
-      email: req.body.email,
-    });
-    res.status(201).json(loginuser);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 router.get("/", async (req, res) => {
   try {
     const createadmin = await admin.find().lean().exec();
