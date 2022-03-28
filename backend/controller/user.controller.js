@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const admin = require("../model/admin.model");
+const user = require("../model/user.model");
 
 router.post("/", async (req, res) => {
   try {
-    const createadmin = await admin.create(req.body);
-    res.status(201).send(createadmin);
+    const createuser = await user.create(req.body);
+    res.status(201).send(createuser);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -15,7 +15,7 @@ router.post("/login", async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
-    const loginuser = await admin.findOne({ email: email });
+    const loginuser = await user.findOne({ email: email });
     if (loginuser.password == password) {
       res.status(201).json("Login Successful");
     } else {
@@ -28,8 +28,8 @@ router.post("/login", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const createadmin = await admin.find().lean().exec();
-    res.status(201).send(createadmin);
+    const createuser = await user.find().lean().exec();
+    res.status(201).send(createuser);
   } catch (err) {
     res.status(500).json(err);
   }
