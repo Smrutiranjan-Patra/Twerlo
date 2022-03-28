@@ -32,8 +32,8 @@ router.post("/login", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const createadmin = await admin.find().lean().exec();
-    res.status(201).send(createadmin);
+    const getadmin = await admin.find().lean().exec();
+    res.status(201).send(getadmin);
   } catch (err) {
     res.status(500).json(err);
   }

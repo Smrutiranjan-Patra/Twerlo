@@ -32,8 +32,8 @@ router.post("/login", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const createuser = await user.find().lean().exec();
-    res.status(201).send(createuser);
+    const getuser = await user.find().lean().exec();
+    res.status(201).send(getuser);
   } catch (err) {
     res.status(500).json(err);
   }
