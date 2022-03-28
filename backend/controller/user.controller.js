@@ -13,16 +13,20 @@ router.post("/", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const email = req.body.email;
-    const password = req.body.password;
-    const loginuser = await user.findOne({ email: email });
-    if (loginuser.password == password) {
-      res.status(201).json("Login Successful");
-    } else {
-      res.status(201).json("Login Failed");
-    }
+    const { email, password } = req.body;
+    user.findOne({ email: email }, (err, user) => {
+      if (user) {
+        if (password === user.password) {
+          res.send({ message: "Login Successfull", user: user });
+        } else {
+          res.send({ message: "Invalid Credentials" });
+        }
+      } else {
+        res.send({ message: "Invalid Credentials" });
+      }
+    });
   } catch (err) {
-    res.status(500).json("Login Failed");
+    res.status(500).json(err);
   }
 });
 
